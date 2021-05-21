@@ -83,7 +83,23 @@ class SinglePendulum:
 
         self._instantiate_system()
 
-    def _compute_forces(self, theta: float):
+    @staticmethod
+    def _deg_to_rad(theta: float):
+        """
+        Convert degrees to radians.
+
+        Parameters
+        ----------
+        theta : float
+                Degree value to convert to radians.
+
+        Returns
+        -------
+        The value in radians.
+        """
+        return theta * np.pi / 180
+
+    def compute_forces(self, theta: float):
         """
         Compute the force on the pendulum bob.
 
@@ -95,7 +111,7 @@ class SinglePendulum:
         Returns
         -------
         """
-        return -1 * (self.gravity / self.length)*tf.sin(theta)
+        return -1 * (self.gravity / self.length)*tf.sin(self._deg_to_rad(theta))
 
     def _compute_ke(self, velocity: float):
         """
@@ -111,7 +127,7 @@ class SinglePendulum:
         ke : float
                 Kinetic energy of the system.
         """
-        return 0.5 * self.mass * velocity ** 2
+        return 0.5 * self.mass * self.length**2 * velocity**2
 
     def _compute_pe(self, position: float):
         """
@@ -127,7 +143,7 @@ class SinglePendulum:
         pe : float
                 potential energy of the system
         """
-        return self.gravity * self.mass * position
+        return self.gravity * self.mass * self.length * (1 - tf.cos(self._deg_to_rad(position)))
 
     def _instantiate_system(self):
         """
@@ -137,10 +153,10 @@ class SinglePendulum:
         Updates the class state.
         """
         if self.integrator is None:
-            self.integrator = Euler(self.time_step)
+            self.integrator = Euler(self.time_step, self)
         self.theta[0] = self.theta_0
         self.velocity[0] = self.v0
-        self.force[0] = self._compute_forces(self.theta_0)
+        self.force[0] = self.compute_forces(self.theta_0)
         self.pe[0] = self._compute_pe(self.theta_0)
         self.ke[0] = self._compute_ke(self.v0)
 
@@ -179,7 +195,7 @@ class SinglePendulum:
         """
         return (t2 - t1) / self.time_step
 
-    def _update_state(self, step: int):
+    def _partial_update_state(self, integration_data: dict, step: int):
         """
         Update the recorded state of the system.
 
@@ -192,10 +208,33 @@ class SinglePendulum:
         -------
         Updates class attributes.
         """
+        self.theta[step] = integration_data['x']
         self.velocity[step] = self._compute_velocity(self.theta[step - 1], self.theta[step])
-        self.force[step] = self._compute_forces(self.theta[step])
+        self.force[step] = self.compute_forces(self.theta[step])
         self.pe[step] = self._compute_pe(self.theta[step])
         self.ke[step] = self._compute_ke(self.velocity[step])
+
+    def _full_update_state(self, integration_data: dict, step: int):
+        """
+        Update the recorded state of the system.
+
+        Parameters
+        ----------
+        step : int
+                Current time step.
+
+        Returns
+        -------
+        Updates class attributes.
+        """
+        try:
+            self.theta[step] = integration_data['x']
+            self.velocity[step] = integration_data['v']
+            self.force[step] = integration_data['a']
+            self.pe[step] = self._compute_pe(self.theta[step])
+            self.ke[step] = self._compute_ke(self.velocity[step])
+        except KeyError:
+            raise ValueError
 
     def _plot_results(self):
         """
@@ -217,17 +256,8 @@ class SinglePendulum:
         """
         for step in range(1, self.steps):
             conditions = self._set_conditions(step)
-            self.theta[step] = self.integrator.perform_step(conditions)
-            self._update_state(step)
-
-
-
-
-
-
-
-
-        
-
-
-
+            integration_step = self.integrator.perform_step(conditions)
+            try:
+                self._full_update_state(integration_step, step)
+            except ValueError:
+                self._partial_update_state(integration_step, step)

@@ -5,12 +5,13 @@ Parent class for all integrators.
 from typing import Any
 import sys
 
+
 class Integrator:
     """
     Class for all integrators.
     """
 
-    def __init__(self, time_step: float):
+    def __init__(self, time_step: float, model: object):
         """
         Constructor for the __init__ class.
 
@@ -18,10 +19,11 @@ class Integrator:
         ----------
         time_step : float
                 Time step of the integrator
-        initial_conditions : dict
-                Initial conditions of the system.
+        model : object
+                System being simulated. Must be added so that forces can be computed.
         """
         self.time_step = time_step
+        self.model = model
 
     @staticmethod
     def _run_check(variable: Any):
