@@ -68,7 +68,7 @@ class SinglePendulum:
         self.mass = mass
         self.length = length
         self.gravity = gravity
-        self.theta_0 = theta_start
+        self.theta_0 = np.deg2rad(theta_start)
         self.v0 = v0
         self.steps = steps
         self.time_step = time_step
@@ -83,22 +83,6 @@ class SinglePendulum:
 
         self._instantiate_system()
 
-    @staticmethod
-    def _deg_to_rad(theta: float):
-        """
-        Convert degrees to radians.
-
-        Parameters
-        ----------
-        theta : float
-                Degree value to convert to radians.
-
-        Returns
-        -------
-        The value in radians.
-        """
-        return theta * np.pi / 180
-
     def compute_forces(self, theta: float):
         """
         Compute the force on the pendulum bob.
@@ -111,7 +95,7 @@ class SinglePendulum:
         Returns
         -------
         """
-        return -1 * (self.gravity / self.length)*tf.sin(self._deg_to_rad(theta))
+        return -1 * (self.gravity / self.length)*tf.sin(theta)
 
     def _compute_ke(self, velocity: float):
         """
@@ -143,7 +127,7 @@ class SinglePendulum:
         pe : float
                 potential energy of the system
         """
-        return self.gravity * self.mass * self.length * (1 - tf.cos(self._deg_to_rad(position)))
+        return self.gravity * self.mass * self.length * (1 - tf.cos(position))
 
     def _instantiate_system(self):
         """
