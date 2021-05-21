@@ -27,6 +27,6 @@ class Euler(Integrator):
         self._run_check(initial_conditions)
 
         new_pos = initial_conditions['x0'] + initial_conditions['v0'] * self.time_step + \
-                    0.5 * initial_conditions['a0'] * (self.time_step ** 2)
+                    initial_conditions['a0'] * (self.time_step ** 2)
 
         return {'x': new_pos}
