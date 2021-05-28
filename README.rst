@@ -2,8 +2,9 @@
 
 Hephaestus
 ----------
-Hephaestus is a python package aimed at performing simulations of unique systems. These range from simple pendulum
-1, through complex deterministic chaotic systems, and anything that is of interest as a solvable problem
+Hephaestus is a python package aimed at performing simulations of unique systems. 
+These range from simple pendulums through complex deterministic chaotic systems, 
+and anything that is of interest as a solvable problem
 in physics. 
 
 Installation
