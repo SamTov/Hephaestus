@@ -1,6 +1,10 @@
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=plastic)]()
+[![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://github.com/SamTov/Hephaestus)  
+
 # Hephaestus
 Hephaestus is a python package aimed at performing simulations of unique systems. These range from simple pendulum
-simulations, through complex deterministic chaotic systems, and anything that is of interest as a solvable problem
+1, through complex deterministic chaotic systems, and anything that is of interest as a solvable problem
 in physics. 
 
 ### Installation
