@@ -11,7 +11,7 @@ with open(path.join(here, 'requirements.txt')) as requirements_file:
     requirements = [line for line in requirements_file.read().splitlines()
                     if not line.startswith('#')]
 
-with open("README.md", "r") as fh:
+with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
