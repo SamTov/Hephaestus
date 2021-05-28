@@ -1,5 +1,4 @@
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![https://github.com/SamTov/Hephaestus stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=plastic)]()
 [![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://github.com/SamTov/Hephaestus)  
 
 # Hephaestus
