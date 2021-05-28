@@ -10,11 +10,16 @@ Installation
 ============
 .. code-block:: bash
 
-git clone https://github.com/SamTov/Hephaestus.git
-cd Hephaestus
-pip3 install -e .
+   git clone https://github.com/SamTov/Hephaestus.git
+   cd Hephaestus
+   pip3 install -e .
 
 
 This command will install Hephaestus locally, i.e, python will look for the package in the directory you cloned. The 
 reason for this approach is that it makes modifying the code very easy, and you will not need to reinstall after every
 modification.
+
+
+.. |build| image:: https://img.shields.io/badge/Build-Passing-green.svg
+:alt: Build tests passing
+:target: https://github.com/SamTov/Hephaestus/blob/readme_badges/.github/workflows/pytest.yaml
