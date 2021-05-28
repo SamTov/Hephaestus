@@ -69,7 +69,7 @@ class SinglePendulum:
         self.length = length
         self.gravity = gravity
         self.theta_0 = np.deg2rad(theta_start)
-        self.v0 = v0
+        self.v0 = np.deg2rad(v0)
         self.steps = steps
         self.time_step = time_step
         self.integrator = integrator

@@ -26,10 +26,10 @@ class VelocityVerlet(Integrator):
         """
         self._run_check(initial_conditions)
 
-        pos_update = initial_conditions['x0'] + initial_conditions['v0']*self.time_step + \
-                     0.5*initial_conditions['a0']*(self.time_step**2)
-        vel_half = initial_conditions['v0'] + 0.5*initial_conditions['a0']*self.time_step
+        pos_update = initial_conditions['x0'] + initial_conditions['v0'] * self.time_step + \
+                     0.5 * initial_conditions['a0'] * (self.time_step ** 2)
+        vel_half = initial_conditions['v0'] + 0.5 * initial_conditions['a0'] * self.time_step
         new_acc = self.model.compute_forces(pos_update)
-        new_vel = vel_half + 0.5*new_acc*self.time_step
+        new_vel = vel_half + 0.5 * new_acc * self.time_step
 
         return {'x': pos_update, 'v': new_vel, 'a': new_acc}

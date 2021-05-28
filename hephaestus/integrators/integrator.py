@@ -49,7 +49,7 @@ class Integrator:
         Parameters
         ----------
         initial_conditions : dict
-                Conitions associated with the integrator.
+                Conditions associated with the integrator.
         Returns
         -------
         Any information returned by the integrator.

@@ -1,3 +1,11 @@
 numpy
 matplotlib
 scipy
+tensorflow
+sphinx_rtd_theme
+sphinx-copybutton
+nbsphinx
+IPython
+pandoc
+numpydoc
+pre-commit
