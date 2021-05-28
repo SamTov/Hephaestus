@@ -19,14 +19,15 @@ This command will install Hephaestus locally, i.e, python will look for the pack
 reason for this approach is that it makes modifying the code very easy, and you will not need to reinstall after every
 modification.
 
+.. badges
 
 .. |build| image:: https://img.shields.io/badge/Build-Passing-green.svg
-:alt: Build tests passing
-:target: https://github.com/SamTov/Hephaestus/blob/readme_badges/.github/workflows/pytest.yaml
+    :alt: Build tests passing
+    :target: https://github.com/SamTov/Hephaestus/blob/readme_badges/.github/workflows/pytest.yaml
 
 .. |license| image:: https://img.shields.io/badge/License-GPLv3.0-green.svg
-:alt: Build tests passing
-:target: https://www.gnu.org/licenses/quick-guide-gplv3.en.html
+    :alt: Build tests passing
+    :target: https://www.gnu.org/licenses/quick-guide-gplv3.en.html
 
 .. |madewithpython| image:: https://img.shields.io/badge/Made%20With-Python-purple.svg
-:alt: Made with python
+    :alt: Made with python
