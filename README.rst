@@ -1,4 +1,4 @@
-|build|
+|build| |madewithpython|
 
 Hephaestus
 ----------
@@ -23,3 +23,6 @@ modification.
 .. |build| image:: https://img.shields.io/badge/Build-Passing-green.svg
 :alt: Build tests passing
 :target: https://github.com/SamTov/Hephaestus/blob/readme_badges/.github/workflows/pytest.yaml
+
+.. |madewithpython| image:: https://img.shields.io/badge/Made%20With-Python-purple.svg
+:alt: Made with python
