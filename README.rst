@@ -19,6 +19,7 @@ This command will install Hephaestus locally, i.e, python will look for the pack
 reason for this approach is that it makes modifying the code very easy, and you will not need to reinstall after every
 modification.
 
+.. badges
 
 .. |build| image:: https://img.shields.io/badge/Build-Passing-green.svg
 :alt: Build tests passing
