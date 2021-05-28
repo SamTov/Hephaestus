@@ -1,5 +1,5 @@
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://github.com/SamTov/Hephaestus)  
+[![Build](https://github.com/SamTov/Hephaestus/blob/readme_badges/.github/workflows/pytest.yaml/badge.svg)]()  
 
 # Hephaestus
 Hephaestus is a python package aimed at performing simulations of unique systems. These range from simple pendulum
