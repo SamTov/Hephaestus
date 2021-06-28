@@ -6,6 +6,7 @@ import tensorflow as tf
 from hephaestus.integrators.integrator import Integrator
 from hephaestus.integrators.euler import Euler
 import numpy as np
+from tqdm import tqdm
 
 
 class SinglePendulum:
@@ -238,7 +239,7 @@ class SinglePendulum:
         -------
 
         """
-        for step in range(1, self.steps):
+        for step in tqdm(range(1, self.steps), ncols=70):
             conditions = self._set_conditions(step)
             integration_step = self.integrator.perform_step(conditions)
             try:
