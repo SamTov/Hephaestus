@@ -22,9 +22,9 @@ modification.
 
 .. badges
 
-.. |build| image:: https://img.shields.io/badge/Build-Passing-green.svg
+.. |build| image:: https://github.com/SamTov/Hephaestus/actions/workflows/pytest.yml/badge.svg
     :alt: Build tests passing
-    :target: https://github.com/SamTov/Hephaestus/blob/readme_badges/.github/workflows/pytest.yaml
+    :target: https://github.com/SamTov/Hephaestus/blob/readme_badges/
 
 .. |license| image:: https://img.shields.io/badge/License-GPLv3.0-green.svg
     :alt: Build tests passing

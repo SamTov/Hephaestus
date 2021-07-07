@@ -160,7 +160,9 @@ class SinglePendulum:
                 All conditions of the system at point step - 1.
         """
 
-        return {'x0': self.theta[step-1], 'v0': self.velocity[step-1], 'a0': self.force[step - 1]}
+        return {'x0': self.theta[step-1],
+                'v0': self.velocity[step-1],
+                'a0': self.force[step - 1]}
 
     def _compute_velocity(self, t1: float, t2: float):
         """
@@ -194,7 +196,8 @@ class SinglePendulum:
         Updates class attributes.
         """
         self.theta[step] = integration_data['x']
-        self.velocity[step] = self._compute_velocity(self.theta[step - 1], self.theta[step])
+        self.velocity[step] = self._compute_velocity(self.theta[step - 1],
+                                                     self.theta[step])
         self.force[step] = self.compute_forces(self.theta[step])
         self.pe[step] = self._compute_pe(self.theta[step])
         self.ke[step] = self._compute_ke(self.velocity[step])
@@ -239,7 +242,9 @@ class SinglePendulum:
         -------
 
         """
-        for step in tqdm(range(1, self.steps), ncols=70):
+        for step in tqdm(range(1, self.steps),
+                         ncols=70,
+                         desc='Running simulation.'):
             conditions = self._set_conditions(step)
             integration_step = self.integrator.perform_step(conditions)
             try:
